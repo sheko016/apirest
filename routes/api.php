@@ -28,13 +28,14 @@ Route::resource('buyers', 'Buyer\BuyerController', ['only' =>['index', 'show']])
 
 Route::resource('users', 'User\UserController');
 
-
-Route::resource('buyers', 'Buyer\BuyerController');
+/*ONLY: SOlamente se va a permitir el metodo index y show*/
+Route::resource('buyers', 'Buyer\BuyerController', ['only' => ['index', 'show']]);
 
 /*
 * Categories
 */
-Route::resource('Categories', 'Category\CategoryController');
+/*except: Todos los metodos menos create y edit */
+Route::resource('Categories', 'Category\CategoryController', ['except' => ['create', 'edit']]);
 
 /*
 * Products
