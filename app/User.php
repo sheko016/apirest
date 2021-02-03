@@ -54,18 +54,18 @@ class User extends Authenticatable
     ];
 
 
-    public function EsVerificado()
+    public function esVerificado()
     {
         return $this->verified == User::USUARIO_VERIFICADO;
     }
 
 
-    public function EsAdministrador()
+    public function esAdministrador()
     {
         return $this->admin == User::USUARIO_ADMINISTRADOR;
     }
 
-    public  static function GenerarVerificacionToken()
+    public  static function generarVerificacionToken()
     {
         return Str::random(40);
     }

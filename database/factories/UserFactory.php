@@ -26,7 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'password' => bcrypt('123456'), // password
 
         'remember_token' => Str::random(10),
         
@@ -41,7 +41,7 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->word,
         'description' => $faker->paragraph(1),    
 
     ];
@@ -52,7 +52,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->name,
         'description' => $faker->paragraph(1),
         'quantity' => $faker->numberBetween(1, 50),
-        'status' => $faker->randomElement([Product::PRODUCTO_DISPONIBLE, Product::PRODUCTO_NO_DISPONIBLE]),
+        'status' => $faker->randomElement([Product::PRODUCT_DISPONIBLE, Product::PRODUCT_NO_DISPONIBLE]),
         'image' => $faker->randomElement(['producto_1','producto_2','producto_3','producto_4','producto_5','producto_6','producto_7','producto_8','producto_9']),
         //'seller_id' => User::inRandomOrder()->first()->id,
         'seller_id' => User::all()->random()->id,
